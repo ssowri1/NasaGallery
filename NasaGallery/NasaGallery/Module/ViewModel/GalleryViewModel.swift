@@ -23,5 +23,4 @@ class GalleryViewModel {
         guard array?.count != 0 else { return "" }
         return array?[index] ?? ""
     }
-    
 }
