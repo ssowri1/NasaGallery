@@ -23,7 +23,6 @@ extension ApiConstansts {
         components.host = host
         components.path = path.rawValue
         components.setQueryItems(with: query ?? [:])
-        print(components.url)
         return components.url!
     }
 }

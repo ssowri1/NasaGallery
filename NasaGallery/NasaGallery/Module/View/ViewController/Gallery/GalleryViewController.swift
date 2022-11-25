@@ -24,6 +24,7 @@ class GalleryViewController: UIViewController {
     // MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = AppGeneral.galleryTitle.rawValue
         collectionView.collectionViewLayout = flowLayout
         serviceCall()
     }

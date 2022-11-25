@@ -22,3 +22,8 @@ enum servicePath: String {
 enum ScrollviewConstants: CGFloat {
     case padding = 200
 }
+
+enum AppGeneral: String {
+    case galleryTitle = "Nasa Gallery"
+    case loadingText = "Loading..."
+}

@@ -29,7 +29,7 @@ class GalleryDetailViewController: ParentViewController {
         view.addSubview(scrollView!)
         scrollView?.contentSize = CGSize(width: screenSize.width * CGFloat(totalCount), height: screenSize.height - ScrollviewConstants.padding.rawValue)
         
-        for i in 1...(totalCount) {
+        for i in 1...totalCount {
             let x = (screenSize.width) * CGFloat(i - 1)
             let containerView = UIView(frame: CGRect(x: x, y: 0, width: screenSize.width, height: screenSize.height))
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
@@ -37,7 +37,6 @@ class GalleryDetailViewController: ParentViewController {
 
             let url = URL(string: imageUrl)!
             ServiceWorker().downloadImage(from: url, imageView: imageView)
-
             containerView.addSubview(imageView)
             scrollView?.addSubview(containerView)
         }

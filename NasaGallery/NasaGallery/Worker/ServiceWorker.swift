@@ -35,7 +35,6 @@ class ServiceWorker: NSObject {
     func downloadImage(from url: URL, imageView: UIImageView) {
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            // always update the UI from the main thread
             DispatchQueue.main.async() {
                 imageView.image = UIImage(data: data)
             }

@@ -16,12 +16,11 @@ class ParentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureAlert()
-        
     }
     
     func configureAlert() {
         alertLabel.frame = CGRect(x: 20, y: 20, width: 110, height: 110)
-        alertLabel.text = "Loading..."
+        alertLabel.text = AppGeneral.loadingText.rawValue
         alertLabel.textAlignment = .center
         alertLabel.center = self.view.center
         alertLabel.numberOfLines = 0
