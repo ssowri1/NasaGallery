@@ -33,6 +33,7 @@ class GalleryDetailViewController: ParentViewController {
             let x = (screenSize.width) * CGFloat(i - 1)
             let containerView = UIView(frame: CGRect(x: x, y: 0, width: screenSize.width, height: screenSize.height))
             let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
+            imageView.contentMode = .scaleAspectFit
             let imageUrl = viewModel.getUrl(index: i - 1)
 
             let url = URL(string: imageUrl)!
