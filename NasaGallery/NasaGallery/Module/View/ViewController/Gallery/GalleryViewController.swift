@@ -10,9 +10,8 @@ import UIKit
 class GalleryViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
     private var dataSource: UICollectionViewDiffableDataSource<ContactSection, ProductResponseModelElement>?
-    private let viewModel = ViewModel()
+    private let viewModel = GalleryViewModel()    
     lazy var flowLayout: UICollectionViewFlowLayout = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
@@ -37,7 +36,6 @@ class GalleryViewController: UIViewController {
         })
     }
     
-    /**Customise tableview */
     func customiseTableview() {
         collectionView.register(UINib(nibName: "GalleryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
         createContactDataSource()
@@ -67,9 +65,16 @@ class GalleryViewController: UIViewController {
     
     /**Create mock data and update into tableview */
     func updateTableViewModels() {
-        if let items = viewModel.serviceResponse {
+        if let items = GalleryViewModel.serviceResponse {
             update(items)
         }
     }
 }
 
+extension GalleryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "GalleryDetailViewController") as? GalleryDetailViewController else { return }
+        viewController.selectedIndex = indexPath.row
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+}

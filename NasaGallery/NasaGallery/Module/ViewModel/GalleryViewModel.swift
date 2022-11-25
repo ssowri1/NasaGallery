@@ -7,17 +7,21 @@
 
 import Foundation
 
-class ViewModel {
-    var serviceResponse: [ProductResponseModelElement]?
+class GalleryViewModel {
+    static var serviceResponse: [ProductResponseModelElement]?
 
     func fetchData(closureHanlder: @escaping(_ status: Bool) -> Void) {
         let url = ApiConstansts.fetchUrl(.nasaPictures)
-        
-//        guard let url = URL(string: "https://raw.githubusercontent.com/obvious/take-home-exercise-data/trunk/nasa-pictures.json") else { return }
-        
         ServiceWorker.fetch(url: url) { (responseData: ProductResponseModel) in
-            self.serviceResponse = responseData
+            GalleryViewModel.serviceResponse = responseData
             closureHanlder(true)
         }
     }
+    
+    func getUrl(index: Int) -> String {
+        let array = GalleryViewModel.serviceResponse?.map { $0.url }
+        guard array?.count != 0 else { return "" }
+        return array?[index] ?? ""
+    }
+    
 }

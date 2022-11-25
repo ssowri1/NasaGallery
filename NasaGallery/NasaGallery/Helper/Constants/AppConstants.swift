@@ -18,3 +18,7 @@ enum servicePath: String {
         // path
     case nasaPictures = "/obvious/take-home-exercise-data/trunk/nasa-pictures.json"
 }
+
+enum ScrollviewConstants: CGFloat {
+    case padding = 200
+}
